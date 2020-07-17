@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html class="overflow-x-hidden">
+    <head>
+        <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale = 1.0, maximum-scale=1.0, user-scalable=no" /> 
+<title>Tic-Tac-Toe V2</title>
+<link rel="stylesheet" type="text/css" href="../css/style.css">
+    </head>
+    <body class="bg-teal-200">
+        
+
+<!--header section start-->
+<section class="w-11/12 max-w-xl mx-auto">
+    <div class="text-center text-blue-900">
+        <h1 class="text-4xl md:text-6xl font-bold border-b-8 border-blue-900">
+            Tic Tac Toe-V2
+        </h1>
+
+        <h1 class="text-2xl md:text-4xl font-semibold italic mt-12">
+            Choose your difficulty
+        </h1>
+
+        <div class="flex flex-col md:flex-row items-center justify-center mt-6">
+            <button class="flex items-center justify-center text-lg md:text-2xl w-full md:w-48 h-12 bg-green-600 border-4 border-green-600 hover:font-bold hover:border-black text-white hover:text-black tracking-wider">
+                EASY
+            </button>
+
+            <button class="flex items-center justify-center text-lg md:text-2xl w-full md:w-48 h-12 bg-orange-600 border-4 border-orange-600 hover:font-bold hover:border-black text-white hover:text-black tracking-wider my-2 mx-12">
+                MEDIUM
+            </button>
+
+            <button class="flex items-center justify-center text-lg md:text-2xl w-full md:w-48 h-12 bg-red-600 border-4 border-red-600 hover:font-bold hover:border-black text-white hover:text-black tracking-wider">
+                IMPOSSIBLE
+            </button>
+        </div>
+    </div>
+</section>
+<!--header section end-->
+
+
+<!--Game board section start-->
+<section class="py-12">
+    <div id="board" class="grid grid-cols-3 grid-rows-3 w-5/6 max-w-3xl mx-auto">
+        <div id="box1" class="boxes border-4 border-blue-900 cursor-pointer">
+            <div id="box1X" class="x">
+                <div class="x1 h-2 bg-teal-700 mx-auto rounded-full"></div>
+                <div class="x2 h-2 bg-teal-700 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="box1O" class="o m-auto rounded-full border-8 border-teal-700"></div>
+        </div>
+
+        <div class="boxes border-b-4 border-t-4 border-blue-900 cursor-pointer">
+            <div id="box2X" class="x">
+                <div class="x1 h-2 bg-teal-700 mx-auto rounded-full"></div>
+                <div class="x2 h-2 bg-teal-700 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="box2O" class="o m-auto rounded-full border-8 border-teal-700"></div>
+        </div>
+
+        <div class="boxes border-4 border-blue-900 cursor-pointer">
+            <div id="box3X" class="x">
+                <div class="x1 h-2 bg-teal-700 mx-auto rounded-full"></div>
+                <div class="x2 h-2 bg-teal-700 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="box3O" class="o m-auto rounded-full border-8 border-teal-700"></div>
+        </div>
+
+        <div class="boxes border-l-4 border-r-4 border-blue-900 cursor-pointer">
+            <div id="box4X" class="x">
+                <div class="x1 h-2 bg-teal-700 mx-auto rounded-full"></div>
+                <div class="x2 h-2 bg-teal-700 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="box4O" class="o m-auto rounded-full border-8 border-teal-700"></div>
+        </div>
+
+        <div class="boxes border-blue-900 cursor-pointer">
+            <div id="box5X" class="x">
+                <div class="x1 h-2 bg-teal-700 mx-auto rounded-full"></div>
+                <div class="x2 h-2 bg-teal-700 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="box5O" class="o m-auto rounded-full border-8 border-teal-700"></div>
+        </div>
+
+        <div class="boxes border-l-4 border-r-4 border-blue-900 cursor-pointer">
+            <div id="box6X" class="x">
+                <div class="x1 h-2 bg-teal-700 mx-auto rounded-full"></div>
+                <div class="x2 h-2 bg-teal-700 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="box6O" class="o m-auto rounded-full border-8 border-teal-700"></div>
+        </div>
+
+        <div class="boxes border-4 border-blue-900 cursor-pointer">
+            <div id="box7X" class="x">
+                <div class="x1 h-2 bg-teal-700 mx-auto rounded-full"></div>
+                <div class="x2 h-2 bg-teal-700 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="box7O" class="o m-auto rounded-full border-8 border-teal-700"></div>
+        </div>
+
+        <div class="boxes border-t-4 border-b-4 border-blue-900 cursor-pointer">
+            <div id="box8X" class="x">
+                <div class="x1 h-2 bg-teal-700 mx-auto rounded-full"></div>
+                <div class="x2 h-2 bg-teal-700 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="box8O" class="o m-auto rounded-full border-8 border-teal-700"></div>
+        </div>
+
+        <div class="boxes border-4 border-blue-900 cursor-pointer">
+            <div id="box9X" class="x">
+                <div class="x1 h-2 bg-teal-700 mx-auto rounded-full"></div>
+                <div class="x2 h-2 bg-teal-700 mx-auto rounded-full"></div>
+            </div>
+
+            <div id="box9O" class="o m-auto rounded-full border-8 border-teal-700"></div>
+        </div>
+    </div>
+</section>
+<!--Game board section end-->
+
+
+<script src="../js/main.js"></script>
+    </body>
+</html>
