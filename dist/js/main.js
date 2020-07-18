@@ -9,8 +9,7 @@ var isSet = []
 var choice
 var setDifficulty = 'easy'
 var difficulty = difficulties[0].innerText
-
-currentDifficulty()
+difficulties[0].style.border = ".3rem solid #000000"
 
 for(let i = 0; i < 9; i++){
     isSet[i] = false
@@ -49,31 +48,6 @@ for(let i = 0; i < 9; i++){
     })
 }
 
-function currentDifficulty(){
-    switch(difficulty){
-        case 'EASY':
-            difficulties[0].style.border = ".3rem solid #000000"
-            break
-        case 'MEDIUM':
-            difficulties[1].style.border = ".3rem solid #000000"
-            break
-        default:
-            difficulties[2].style.border = ".3rem solid #000000"
-    }
-}
-
-function setToEasy(){
-
-}
-
-function setToMedium(){
-
-}
-
-function setToImpossible(){
-
-}
-
 function compMoveEasy(){
         if(!gameOver){
             choice = Math.floor(Math.random() * 9)
@@ -91,6 +65,40 @@ function compMoveEasy(){
         }
 }
 
+function compMoveMedium(){
+    if(!gameOver){
+        choice = Math.floor(Math.random() * 9)
+        while (isSet[choice]) {
+            choice = Math.floor(Math.random() * 9)
+        }
+        isSet[choice] = true
+        sleep(500).then(() =>{
+            o[choice].style.transform = "translateY(0rem)",
+            o[choice].style.width = "8rem",
+            o[choice].style.height = "8rem",
+            o[choice].style.border = "0.5rem solid #2c7a7b"
+        })
+        checkWinner()
+    }
+}
+
+function compMoveImpossible(){
+    if(!gameOver){
+        choice = Math.floor(Math.random() * 9)
+        while (isSet[choice]) {
+            choice = Math.floor(Math.random() * 9)
+        }
+        isSet[choice] = true
+        sleep(500).then(() =>{
+            o[choice].style.transform = "translateY(0rem)",
+            o[choice].style.width = "8rem",
+            o[choice].style.height = "8rem",
+            o[choice].style.border = "0.5rem solid #2c7a7b"
+        })
+        checkWinner()
+    }
+}
+
 function checkWinner(){
     gameOver = isSet.every((item) => item)
     if(gameOver){
@@ -99,8 +107,24 @@ function checkWinner(){
 }
 
 function getWinner(){
-    endGameBanner.style.display = "flex"
-    endGameBanner.style.opacity = "1"
+    if(userWon){
+
+    }else{
+        endGameBanner.style.display = "flex"
+        endGameBanner.style.opacity = "1"
+    }
+    
+}
+
+function resetBoard(){
+    for(let i = 0; i < 9; i++){
+        isSet[i] = false
+        x1[i].style.width = "0rem"
+        x2[i].style.width = "0rem"
+        o[i].style.width = "0rem"
+        o[i].style.height = "0rem"
+        o[i].style.border = "none"
+    }
 }
 
 function sleep(ms) {
@@ -116,21 +140,19 @@ difficulties.forEach((item)=>{
                 difficulties[0].style.border = ".3rem solid #000000"
                 difficulties[1].style.border = "none"
                 difficulties[2].style.border = "none"
-                setToEasy()
                 break
             case 'MEDIUM':
                 setDifficulty = 'medium'
                 difficulties[1].style.border = ".3rem solid #000000"
                 difficulties[0].style.border = "none"
                 difficulties[2].style.border = "none"
-                setToMedium()
                 break
             default:
                 setDifficulty = 'impossible'
                 difficulties[2].style.border = ".3rem solid #000000"
                 difficulties[0].style.border = "none"
                 difficulties[1].style.border = "none"
-                setToImpossible()
         }
+        resetBoard()
     })
 })

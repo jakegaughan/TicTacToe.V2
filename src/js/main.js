@@ -9,8 +9,7 @@ var isSet = []
 var choice
 var setDifficulty = 'easy'
 var difficulty = difficulties[0].innerText
-
-currentDifficulty()
+difficulties[0].style.border = ".3rem solid #000000"
 
 for(let i = 0; i < 9; i++){
     isSet[i] = false
@@ -47,19 +46,6 @@ for(let i = 0; i < 9; i++){
         }
             
     })
-}
-
-function currentDifficulty(){
-    switch(difficulty){
-        case 'EASY':
-            difficulties[0].style.border = ".3rem solid #000000"
-            break
-        case 'MEDIUM':
-            difficulties[1].style.border = ".3rem solid #000000"
-            break
-        default:
-            difficulties[2].style.border = ".3rem solid #000000"
-    }
 }
 
 function compMoveEasy(){
@@ -121,8 +107,24 @@ function checkWinner(){
 }
 
 function getWinner(){
-    endGameBanner.style.display = "flex"
-    endGameBanner.style.opacity = "1"
+    if(userWon){
+
+    }else{
+        endGameBanner.style.display = "flex"
+        endGameBanner.style.opacity = "1"
+    }
+    
+}
+
+function resetBoard(){
+    for(let i = 0; i < 9; i++){
+        isSet[i] = false
+        x1[i].style.width = "0rem"
+        x2[i].style.width = "0rem"
+        o[i].style.width = "0rem"
+        o[i].style.height = "0rem"
+        o[i].style.border = "none"
+    }
 }
 
 function sleep(ms) {
@@ -151,5 +153,6 @@ difficulties.forEach((item)=>{
                 difficulties[0].style.border = "none"
                 difficulties[1].style.border = "none"
         }
+        resetBoard()
     })
 })
