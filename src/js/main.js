@@ -62,18 +62,6 @@ function currentDifficulty(){
     }
 }
 
-function setToEasy(){
-
-}
-
-function setToMedium(){
-
-}
-
-function setToImpossible(){
-
-}
-
 function compMoveEasy(){
         if(!gameOver){
             choice = Math.floor(Math.random() * 9)
@@ -89,6 +77,40 @@ function compMoveEasy(){
             })
             checkWinner()
         }
+}
+
+function compMoveMedium(){
+    if(!gameOver){
+        choice = Math.floor(Math.random() * 9)
+        while (isSet[choice]) {
+            choice = Math.floor(Math.random() * 9)
+        }
+        isSet[choice] = true
+        sleep(500).then(() =>{
+            o[choice].style.transform = "translateY(0rem)",
+            o[choice].style.width = "8rem",
+            o[choice].style.height = "8rem",
+            o[choice].style.border = "0.5rem solid #2c7a7b"
+        })
+        checkWinner()
+    }
+}
+
+function compMoveImpossible(){
+    if(!gameOver){
+        choice = Math.floor(Math.random() * 9)
+        while (isSet[choice]) {
+            choice = Math.floor(Math.random() * 9)
+        }
+        isSet[choice] = true
+        sleep(500).then(() =>{
+            o[choice].style.transform = "translateY(0rem)",
+            o[choice].style.width = "8rem",
+            o[choice].style.height = "8rem",
+            o[choice].style.border = "0.5rem solid #2c7a7b"
+        })
+        checkWinner()
+    }
 }
 
 function checkWinner(){
@@ -116,21 +138,18 @@ difficulties.forEach((item)=>{
                 difficulties[0].style.border = ".3rem solid #000000"
                 difficulties[1].style.border = "none"
                 difficulties[2].style.border = "none"
-                setToEasy()
                 break
             case 'MEDIUM':
                 setDifficulty = 'medium'
                 difficulties[1].style.border = ".3rem solid #000000"
                 difficulties[0].style.border = "none"
                 difficulties[2].style.border = "none"
-                setToMedium()
                 break
             default:
                 setDifficulty = 'impossible'
                 difficulties[2].style.border = ".3rem solid #000000"
                 difficulties[0].style.border = "none"
                 difficulties[1].style.border = "none"
-                setToImpossible()
         }
     })
 })
