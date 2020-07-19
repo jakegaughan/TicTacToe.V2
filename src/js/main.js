@@ -4,9 +4,10 @@ const o = document.querySelectorAll('.o')
 const x = document.querySelectorAll('.x')
 const x1 = document.querySelectorAll('.x1')
 const x2 = document.querySelectorAll('.x2')
-var endGameBanner = document.querySelector('#endGameBanner')
+var drawGameBanner = document.querySelector('#drawGameBanner')
 var isSet = []
 var choice
+var userWon = false
 var setDifficulty = 'easy'
 var difficulty = difficulties[0].innerText
 difficulties[0].style.border = ".3rem solid #000000"
@@ -109,9 +110,12 @@ function checkWinner(){
 function getWinner(){
     if(userWon){
 
+    }else if(compWon){
+        drawGameBanner.style.display = "flex"
+        drawGameBanner.style.opacity = "1"
     }else{
-        endGameBanner.style.display = "flex"
-        endGameBanner.style.opacity = "1"
+        drawGameBanner.style.display = "flex"
+        drawGameBanner.style.opacity = "1"
     }
     
 }

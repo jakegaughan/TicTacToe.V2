@@ -120,7 +120,30 @@ layout: layout.liquid
 </section>
 <!--Game board section end-->
 
-<section id="endGameBanner" class="flex items-center justify-center absolute w-11/12 max-w-6xl mx-auto inset-x-0 text-center rounded-full z-50">
+<!--Draw Winning Banner Start-->
+<section id="drawGameBanner" class="flex items-center justify-center absolute w-11/12 max-w-6xl mx-auto inset-x-0 text-center rounded-full z-50">
+    <div class="flex">
+        <img src="../img/draw.gif"/>
+    </div>
+
+    <div class="mx-12">
+        <div id="Xwinner1" class="h-2 bg-white mx-auto rounded-full"></div>
+        <div id="Xwinner2" class="h-2 bg-white mx-auto rounded-full"></div>
+        <div id="Owinner" class="m-auto rounded-full border-8 border-white"></div>
+        <h1 class="text-5xl text-white font-bold">
+            Winner
+        </h1>
+    </div>
+
+    <div class="flex">
+        <img src="../img/draw.gif"/>
+    </div>
+</section>
+<!--Computer Wins Banner end-->
+
+
+<!--Computer Winning Banner Start-->
+<section id="compWinningGameBanner" class="flex items-center justify-center absolute w-11/12 max-w-6xl mx-auto inset-x-0 text-center rounded-full z-50">
     <div class="flex">
         <img src="../img/fireworks.gif"/>
         <img src="../img/fireworks.gif"/>
@@ -139,8 +162,8 @@ layout: layout.liquid
         <img src="../img/fireworks.gif"/>
         <img src="../img/fireworks.gif"/>
     </div>
-    
 </section>
+<!--Computer Wins Banner end-->
 
 
 <script src="../js/main.js"></script>
