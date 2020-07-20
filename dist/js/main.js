@@ -12,7 +12,6 @@ var isSet = []
 var XSet = []
 var OSet = []
 var choice, winner
-var count = 1
 var whichMove = 1
 var setDifficulty = 'easy'
 var difficulty = difficulties[0].innerText
@@ -88,12 +87,46 @@ function compMoveEasy(){
 }
 
 function compMoveMedium(){
-    if(count % 2 === 0){
-        compMoveEasy()
+    if(!isSet[0] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]))){
+        markO(0)
+    }else if(!isSet[1] && ((OSet[0] && OSet[2]) || (OSet[4] && OSet[7]))){
+        markO(1)
+    }else if(!isSet[2] && ((OSet[0] && OSet[1]) || (OSet[5] && OSet[8]) || (OSet[4] && OSet[6]))){
+        markO(2)
+    }else if(!isSet[3] && ((OSet[0] && OSet[6]) || (OSet[4] && OSet[5]) || (OSet[0] && OSet[6]))){
+        markO(3)
+    }else if(!isSet[4] && ((OSet[0] && OSet[8]) || (OSet[2] && OSet[6]) || (OSet[1] && OSet[7]) || (OSet[3] && OSet[5]))){
+        markO(4)
+    }else if(!isSet[5] && ((OSet[2] && OSet[8]) || (OSet[3] && OSet[4]) || (OSet[2] && OSet[8]))){
+        markO(5)
+    }else if(!isSet[6] && ((OSet[0] && OSet[3]) || (OSet[4] && OSet[2]) || (OSet[7] && OSet[8]))){
+        markO(6)
+    }else if(!isSet[7] && ((OSet[1] && OSet[4]) || (OSet[6] && OSet[8]))){
+        markO(7)
+    }else if(!isSet[8] && ((OSet[6] && OSet[7]) || (OSet[2] && OSet[5]) || (OSet[4] && OSet[0]))){
+        markO(8)
+    }else if(!isSet[0] && ((XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
+        markO(0)
+    }else if(!isSet[1] && ((XSet[0] && XSet[2]) || (XSet[4] && XSet[7]))){
+        markO(1)
+    }else if(!isSet[2] && ((XSet[0] && XSet[1]) || (XSet[5] && XSet[8]) || (XSet[4] && XSet[6]))){
+        markO(2)
+    }else if(!isSet[3] && ((XSet[0] && XSet[6]) || (XSet[4] && XSet[5]) || (XSet[0] && XSet[6]))){
+        markO(3)
+    }else if(!isSet[4] && ((XSet[0] && XSet[8]) || (XSet[2] && XSet[6]) || (XSet[1] && XSet[7]) || (XSet[3] && XSet[5]))){
+        markO(4)
+    }else if(!isSet[5] && ((XSet[2] && XSet[8]) || (XSet[3] && XSet[4]) || (XSet[2] && XSet[8]))){
+        markO(5)
+    }else if(!isSet[6] && ((XSet[0] && XSet[3]) || (XSet[4] && XSet[2]) || (XSet[7] && XSet[8]))){
+        markO(6)
+    }else if(!isSet[7] && ((XSet[1] && XSet[4]) || (XSet[6] && XSet[8]))){
+        markO(7)
+    }else if(!isSet[8] && ((XSet[6] && XSet[7]) || (XSet[2] && XSet[5]) || (XSet[4] && XSet[0]))){
+        markO(8)
     }else{
-        compMoveImpossible()
+        compMoveEasy()
     }
-    count++
+    checkWinner()
 }
 
 function compMoveImpossible(){
@@ -186,17 +219,17 @@ function compMoveImpossible(){
             if(OSet[4]){
                 if((OSet[1] && !isSet[7]) || (OSet[5] && XSet[3]) || (OSet[0] && XSet[6] && XSet[8])){
                     markO(7)
-                }else if((OSet[3] && !isSet[5]) || (OSet[7] && XSet[1]) || (OSet[1] && XSet[7]) || (OSet[0] && XSet[2] && XSet[8])){
+                }else if((OSet[3] && !isSet[5]) || (OSet[1] && XSet[7]) || (OSet[0] && XSet[2] && XSet[8])){
                     markO(5)
-                }else if(OSet[7] && !isSet[1]){
+                }else if((OSet[7] && !isSet[1]) || (OSet[6] && XSet[0] && XSet[2])){
                     markO(1)
                 }else if((OSet[2] && !isSet[6]) || (OSet[0] && XSet[7] && XSet[8]) || (OSet[8] && XSet[0] && XSet[3])){
                     markO(6)
-                }else if((OSet[6] && !isSet[2]) || (OSet[3] && XSet[8]) || (OSet[0] && XSet[8] && XSet[5])){
+                }else if((OSet[6] && !isSet[2]) || (OSet[3] && XSet[8]) || (OSet[0] && XSet[8] && XSet[5]) || (OSet[8] && XSet[1] && XSet[0]) || (OSet[7] && XSet[6] && XSet[8])){
                     markO(2)
                 }else if((OSet[5] && !isSet[3]) || (OSet[8] && XSet[0] && XSet[6])){
                     markO(3)
-                }else if(OSet[8] && !isSet[0]){
+                }else if((OSet[8] && !isSet[0]) || (OSet[7] && XSet[1] && XSet[2])){
                     markO(0)
                 }else if(OSet[2] && XSet[6]){
                     markO(3)
@@ -257,25 +290,7 @@ function compMoveImpossible(){
             break
 
         default:
-            if(!isSet[0] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
-                markO(0)
-            }else if(!isSet[1] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
-                markO(1)
-            }else if(!isSet[2] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
-                markO(2)
-            }else if(!isSet[3] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
-                markO(3)
-            }else if(!isSet[4] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
-                markO(4)
-            }else if(!isSet[5] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
-                markO(5)
-            }else if(!isSet[6] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
-                markO(6)
-            }else if(!isSet[7] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
-                markO(7)
-            }else{
-                markO(8)
-            }
+            compMoveMedium()
     }
     whichMove++
     checkWinner()
@@ -389,7 +404,6 @@ function resetBoard(){
     drawGameBanner.style.display = "none"
     drawGameBanner.style.opacity = "0"
     gameOver = false
-    count = 1
     whichMove = 1
 }
 
