@@ -59,19 +59,27 @@ for(let i = 0; i < 9; i++){
     })
 }
 
+function markO(a){
+    if(isSet[a]){
+        return
+    }else{
+        isSet[a] = true
+        OSet[a] = true
+        sleep(400).then(() =>{
+            o[a].style.transform = "translateY(0rem)",
+            o[a].style.width = "8rem",
+            o[a].style.height = "8rem",
+            o[a].style.border = "0.5rem solid #2c7a7b"
+        })
+    }
+}
+
 function compMoveEasy(){
     choice = Math.floor(Math.random() * 9)
     while (isSet[choice]) {
         choice = Math.floor(Math.random() * 9)
     }
-    isSet[choice] = true
-    OSet[choice] = true
-    sleep(400).then(() =>{
-        o[choice].style.transform = "translateY(0rem)",
-        o[choice].style.width = "8rem",
-        o[choice].style.height = "8rem",
-        o[choice].style.border = "0.5rem solid #2c7a7b"
-    })
+    markO(choice)
     checkWinner()
 }
 
@@ -88,126 +96,115 @@ function compMoveImpossible(){
     switch(whichMove){
         case 1:
             if(XSet[0] || XSet[2] || XSet[6] || XSet[8]){
-                isSet[4] = true
-                OSet[4] = true
-                sleep(400).then(() =>{
-                    o[4].style.transform = "translateY(0rem)",
-                    o[4].style.width = "8rem",
-                    o[4].style.height = "8rem",
-                    o[4].style.border = "0.5rem solid #2c7a7b"
-                })
+                markO(4)
+            }else if(XSet[1] || XSet[3]){
+                markO(0)
+            }else if(XSet[5] || XSet[7]){
+                markO(8)
             }else{
-                isSet[8] = true
-                OSet[8] = true
-                sleep(400).then(() =>{
-                    o[8].style.transform = "translateY(0rem)",
-                    o[8].style.width = "8rem",
-                    o[8].style.height = "8rem",
-                    o[8].style.border = "0.5rem solid #2c7a7b"
-                })
+                markO(6)
             }
             break
 
         case 2:
             if(OSet[4]){
                 if(XSet[0] && XSet[2]){
-                    isSet[1] = true
-                    OSet[1] = true
-                    sleep(400).then(() =>{
-                        o[1].style.transform = "translateY(0rem)",
-                        o[1].style.width = "8rem",
-                        o[1].style.height = "8rem",
-                        o[1].style.border = "0.5rem solid #2c7a7b"
-                    })
-                }else if(XSet[0] && XSet[6]){
-                    isSet[3] = true
-                    OSet[3] = true
-                    sleep(400).then(() =>{
-                        o[3].style.transform = "translateY(0rem)",
-                        o[3].style.width = "8rem",
-                        o[3].style.height = "8rem",
-                        o[3].style.border = "0.5rem solid #2c7a7b"
-                    })
-                }else if(XSet[2] && XSet[8]){
-                    isSet[5] = true
-                    OSet[5] = true
-                    sleep(400).then(() =>{
-                        o[5].style.transform = "translateY(0rem)",
-                        o[5].style.width = "8rem",
-                        o[5].style.height = "8rem",
-                        o[5].style.border = "0.5rem solid #2c7a7b"
-                    })
-                }else if(XSet[6] && XSet[8]){
-                    isSet[7] = true
-                    OSet[7] = true
-                    sleep(400).then(() =>{
-                        o[7].style.transform = "translateY(0rem)",
-                        o[7].style.width = "8rem",
-                        o[7].style.height = "8rem",
-                        o[7].style.border = "0.5rem solid #2c7a7b"
-                    })
-                }else if(XSet[0] && XSet[1]){
-                    isSet[2] = true
-                    OSet[2] = true
-                    sleep(400).then(() =>{
-                        o[2].style.transform = "translateY(0rem)",
-                        o[2].style.width = "8rem",
-                        o[2].style.height = "8rem",
-                        o[2].style.border = "0.5rem solid #2c7a7b"
-                    })
-                }else if(XSet[0] && XSet[3]){
-                    isSet[6] = true
-                    OSet[6] = true
-                    sleep(400).then(() =>{
-                        o[6].style.transform = "translateY(0rem)",
-                        o[6].style.width = "8rem",
-                        o[6].style.height = "8rem",
-                        o[6].style.border = "0.5rem solid #2c7a7b"
-                    })
-                }else if(XSet[2] && XSet[1]){
-                    isSet[0] = true
-                    OSet[0] = true
-                    sleep(400).then(() =>{
-                        o[0].style.transform = "translateY(0rem)",
-                        o[0].style.width = "8rem",
-                        o[0].style.height = "8rem",
-                        o[0].style.border = "0.5rem solid #2c7a7b"
-                    })
-                }else if(XSet[2] && XSet[5]){
-                    isSet[8] = true
-                    OSet[8] = true
-                    sleep(400).then(() =>{
-                        o[8].style.transform = "translateY(0rem)",
-                        o[8].style.width = "8rem",
-                        o[8].style.height = "8rem",
-                        o[8].style.border = "0.5rem solid #2c7a7b"
-                    })
-                }else if(XSet[6] && XSet[3]){
-                    isSet[0] = true
-                    OSet[0] = true
-                    sleep(400).then(() =>{
-                        o[0].style.transform = "translateY(0rem)",
-                        o[0].style.width = "8rem",
-                        o[0].style.height = "8rem",
-                        o[0].style.border = "0.5rem solid #2c7a7b"
-                    })
-                }else if(XSet[6] && XSet[7]){
-                    isSet[8] = true
-                    OSet[8] = true
-                    sleep(400).then(() =>{
-                        o[8].style.transform = "translateY(0rem)",
-                        o[8].style.width = "8rem",
-                        o[8].style.height = "8rem",
-                        o[8].style.border = "0.5rem solid #2c7a7b"
-                    })
+                    markO(1)
+                }else if((XSet[2] && XSet[8]) || (XSet[0] && XSet[7])){
+                    markO(5)
+                }else if((XSet[2] && XSet[5]) || (XSet[6] && XSet[7])){
+                    markO(8)
+                }else if((XSet[6] && XSet[3])|| (XSet[2] && XSet[1])){
+                    markO(0)
+                }else if((XSet[8] && XSet[5]) || (XSet[0] && XSet[1])){
+                    markO(2)
+                }else if((XSet[0] && XSet[8]) || (XSet[2] && XSet[6]) || (XSet[0] && XSet[6]) || (XSet[2] && XSet[7])){
+                    markO(3)
+                }else if((XSet[8] && XSet[7]) || (XSet[0] && XSet[3]) || (XSet[2] && XSet[6]) || (XSet[0] && XSet[5]) || (XSet[0] && XSet[5])){
+                    markO(6)
+                }else{
+                    markO(7)
+                }
+            }else if(OSet[0] && XSet[1]){
+                if(XSet[7]){
+                    markO(4)
+                }else if(XSet[2] || XSet[5]){
+                    markO(6)
+                }else{
+                    markO(7)
+                }
+            }else if(OSet[0] && XSet[3]){
+                if(XSet[5]){
+                    markO(4)
+                }else if(XSet[6] || XSet[7]){
+                    markO(2)
+                }else{
+                    markO(5)
+                }
+            }else if(OSet[8] && XSet[7]){
+                if(XSet[1]){
+                    markO(4)
+                }else if(XSet[6] || XSet[3]){
+                    markO(2)
+                }else{
+                    markO(1)
+                }
+            }else if(OSet[8] && XSet[5]){
+                if(XSet[2] || XSet[3] || XSet[8]){
+                    markO(0)
+                }else if(XSet[1]){
+                    markO(7)
+                }else if(XSet[5]){
+                    markO(3)
+                }else{
+                    markO(1)
                 }
             }else{
-
+                if(XSet[0]){
+                    markO(8)
+                }else if(XSet[1]){
+                    markO(7)
+                }else if(XSet[3]){
+                    markO(5)
+                }else if(XSet[5]){
+                    markO(3)
+                }else if(XSet[7]){
+                    markO(1)
+                }else{
+                    markO(0)
+                }
             }
             break
 
         case 3:
-            if(XSet[0] || XSet[2] || XSet[6] || XSet[7])
+            if(OSet[4]){
+                if((OSet[1] && !isSet[7]) || (OSet[5] && XSet[3])){
+                    markO(7)
+                }else if((OSet[3] && !isSet[5]) || (OSet[7] && XSet[1]) || (OSet[1] && XSet[7])){
+                    markO(5)
+                }else if(OSet[7] && !isSet[1]){
+                    markO(1)
+                }else if(OSet[2] && !isSet[6]){
+                    markO(6)
+                }else if((OSet[6] && !isSet[2]) || (OSet[3] && XSet[8])){
+                    markO(2)
+                }else if(OSet[5] && !isSet[3]){
+                    markO(3)
+                }else if(OSet[8] && !isSet[0]){
+                    markO(0)
+                }else if(OSet[2] && XSet[6]){
+                    markO(3)
+                }else{
+                    markO(8)
+                }
+            }else if(OSet[6]){
+                if(OSet[0] && !isSet[3]){
+                    markO(3)
+                }else if(OSet[3] && !isSet[0]){
+                    markO(0)
+                }else
+            }
+            
             break
 
         default:
@@ -216,6 +213,7 @@ function compMoveImpossible(){
             }
     }
     whichMove++
+    checkWinner()
 }
 
 function checkWinner(){
