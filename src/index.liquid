@@ -11,7 +11,7 @@ layout: layout.liquid
             Tic Tac Toe-V2
         </h1>
 
-        <h1 class="text-2xl md:text-4xl font-semibold italic mt-12">
+        <h1 class="text-2xl md:text-4xl font-semibold italic mt-8">
             Choose your difficulty
         </h1>
 
@@ -34,7 +34,7 @@ layout: layout.liquid
 
 
 <!--Game board section start-->
-<section class="py-12">
+<section class="py-8">
     <div id="board" class="grid grid-cols-3 grid-rows-3 w-5/6 max-w-3xl mx-auto">
         <div class="boxes border-4 border-blue-900 hover:bg-teal-300 cursor-pointer">
             <div class="x">
@@ -120,23 +120,28 @@ layout: layout.liquid
 </section>
 <!--Game board section end-->
 
+<!--reset board-->
+    <div class="flex items-center justify-center">
+        <button id="resetBoard" class="font-bold tracking-wide text-2xl bg-pink-300 w-64 py-2 border-4 border-pink-400 hover:bg-pink-400 hover:border-pink-700 focus:outline-none">
+            RESET GAME
+        </button>
+    </div>
+<!--reset board-->
+
 <!--Draw Winning Banner Start-->
 <section id="drawGameBanner" class="flex items-center justify-center absolute w-11/12 max-w-6xl mx-auto inset-x-0 text-center rounded-full z-50">
     <div class="flex">
-        <img src="../img/draw.gif"/>
+        <img class="w-64" src="../img/draw.gif"/>
     </div>
 
     <div class="mx-12">
-        <div id="Xwinner1" class="h-2 bg-white mx-auto rounded-full"></div>
-        <div id="Xwinner2" class="h-2 bg-white mx-auto rounded-full"></div>
-        <div id="Owinner" class="m-auto rounded-full border-8 border-white"></div>
         <h1 class="text-5xl text-white font-bold">
-            Winner
+            IT'S A DRAW!
         </h1>
     </div>
 
     <div class="flex">
-        <img src="../img/draw.gif"/>
+        <img class="w-64" src="../img/draw.gif"/>
     </div>
 </section>
 <!--Computer Wins Banner end-->
@@ -145,6 +150,28 @@ layout: layout.liquid
 <!--Computer Winning Banner Start-->
 <section id="compWinningGameBanner" class="flex items-center justify-center absolute w-11/12 max-w-6xl mx-auto inset-x-0 text-center rounded-full z-50">
     <div class="flex">
+        <img class="w-64" src="../img/johnCena.gif"/>
+    </div>
+
+    <div class="mx-12">
+        <div id="Owinner" class="m-auto rounded-full border-8 border-white"></div>
+        <h1 class="text-5xl text-white font-bold">
+            WINS!
+        </h1>
+    </div>
+
+    <div class="flex">
+        <img class="w-64" src="../img/johnCena.gif"/>
+    </div>
+</section>
+<!--Computer Wins Banner end-->
+
+
+<!--User Winning Banner Start-->
+<section id="userWinningGameBanner" class="flex items-center justify-center absolute w-11/12 max-w-6xl mx-auto inset-x-0 text-center rounded-full z-50">
+    <div class="flex">
+        <img src="../img/fireworks.gif"/>
+        <img src="../img/fireworks.gif"/>
         <img src="../img/fireworks.gif"/>
         <img src="../img/fireworks.gif"/>
     </div>
@@ -152,18 +179,18 @@ layout: layout.liquid
     <div class="mx-12">
         <div id="Xwinner1" class="h-2 bg-white mx-auto rounded-full"></div>
         <div id="Xwinner2" class="h-2 bg-white mx-auto rounded-full"></div>
-        <div id="Owinner" class="m-auto rounded-full border-8 border-white"></div>
-        <h1 class="text-5xl text-white font-bold">
-            Winner
+        <h1 class="text-5xl text-white font-bold pt-24">
+            WINS!
         </h1>
     </div>
 
     <div class="flex">
         <img src="../img/fireworks.gif"/>
         <img src="../img/fireworks.gif"/>
+        <img src="../img/fireworks.gif"/>
+        <img src="../img/fireworks.gif"/>
     </div>
 </section>
-<!--Computer Wins Banner end-->
-
+<!--User Wins Banner end-->
 
 <script src="../js/main.js"></script>
