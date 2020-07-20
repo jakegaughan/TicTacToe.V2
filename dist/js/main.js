@@ -74,6 +74,10 @@ function markO(a){
     }
 }
 
+function checkWinAvailable(){
+
+}
+
 function compMoveEasy(){
     choice = Math.floor(Math.random() * 9)
     while (isSet[choice]) {
@@ -126,7 +130,7 @@ function compMoveImpossible(){
                     markO(7)
                 }
             }else if(OSet[0] && XSet[1]){
-                if(XSet[7]){
+                if(XSet[7] || XSet[6]){
                     markO(4)
                 }else if(XSet[2] || XSet[5]){
                     markO(6)
@@ -134,7 +138,7 @@ function compMoveImpossible(){
                     markO(7)
                 }
             }else if(OSet[0] && XSet[3]){
-                if(XSet[5]){
+                if(XSet[5] || XSet[2]){
                     markO(4)
                 }else if(XSet[6] || XSet[7]){
                     markO(2)
@@ -142,7 +146,7 @@ function compMoveImpossible(){
                     markO(5)
                 }
             }else if(OSet[8] && XSet[7]){
-                if(XSet[1]){
+                if(XSet[1] || XSet[2]){
                     markO(4)
                 }else if(XSet[6] || XSet[3]){
                     markO(2)
@@ -150,12 +154,14 @@ function compMoveImpossible(){
                     markO(1)
                 }
             }else if(OSet[8] && XSet[5]){
-                if(XSet[2] || XSet[3] || XSet[8]){
+                if(XSet[2] || XSet[8]){
                     markO(0)
                 }else if(XSet[1]){
-                    markO(7)
-                }else if(XSet[5]){
+                    markO(6)
+                }else if(XSet[4] || XSet[0]){
                     markO(3)
+                }else if(XSet[3] || XSet[6]){
+                    markO(4)
                 }else{
                     markO(1)
                 }
@@ -178,17 +184,17 @@ function compMoveImpossible(){
 
         case 3:
             if(OSet[4]){
-                if((OSet[1] && !isSet[7]) || (OSet[5] && XSet[3])){
+                if((OSet[1] && !isSet[7]) || (OSet[5] && XSet[3]) || (OSet[0] && XSet[6] && XSet[8])){
                     markO(7)
-                }else if((OSet[3] && !isSet[5]) || (OSet[7] && XSet[1]) || (OSet[1] && XSet[7])){
+                }else if((OSet[3] && !isSet[5]) || (OSet[7] && XSet[1]) || (OSet[1] && XSet[7]) || (OSet[0] && XSet[2] && XSet[8])){
                     markO(5)
                 }else if(OSet[7] && !isSet[1]){
                     markO(1)
-                }else if(OSet[2] && !isSet[6]){
+                }else if((OSet[2] && !isSet[6]) || (OSet[0] && XSet[7] && XSet[8]) || (OSet[8] && XSet[0] && XSet[3])){
                     markO(6)
-                }else if((OSet[6] && !isSet[2]) || (OSet[3] && XSet[8])){
+                }else if((OSet[6] && !isSet[2]) || (OSet[3] && XSet[8]) || (OSet[0] && XSet[8] && XSet[5])){
                     markO(2)
-                }else if(OSet[5] && !isSet[3]){
+                }else if((OSet[5] && !isSet[3]) || (OSet[8] && XSet[0] && XSet[6])){
                     markO(3)
                 }else if(OSet[8] && !isSet[0]){
                     markO(0)
@@ -197,19 +203,78 @@ function compMoveImpossible(){
                 }else{
                     markO(8)
                 }
-            }else if(OSet[6]){
-                if(OSet[0] && !isSet[3]){
+            }else if(OSet[6] && XSet[4]){
+                if((OSet[0] && !isSet[3]) || (OSet[1] && XSet[5])){
                     markO(3)
-                }else if(OSet[3] && !isSet[0]){
+                }else if((OSet[3] && !isSet[0]) || (OSet[7] && XSet[8]) || (OSet[5] && XSet[8]) || (OSet[5] && XSet[2]) || (OSet[1] && XSet[8])){
                     markO(0)
-                }else
+                }else if((OSet[7] && !isSet[8]) || (OSet[3] && XSet[0]) || (OSet[5] && XSet[0]) || (OSet[1] && XSet[0]) || (OSet[1] && XSet[2])){
+                    markO(8)
+                }else if((OSet[8] && !isSet[7]) || (OSet[5] && XSet[1])){
+                    markO(7)
+                }else if((OSet[0] && XSet[3]) || (OSet[1] && XSet[3])){
+                    markO(5)
+                }else if((OSet[8] && XSet[7]) || (OSet[5] && XSet[7])){
+                    markO(1)
+                }
+            }else if(OSet[0]){
+                if((OSet[6] && XSet[3] && XSet[2]) || (OSet[7] && XSet[2] && XSet[3]) || (OSet[2] && XSet[1] && XSet[6])){
+                    markO(8)
+                }else if((OSet[6] && !isSet[3]) || (OSet[7] && XSet[4] && XSet[5])){
+                    markO(3)
+                }else if((OSet[2] && !isSet[1]) || (OSet[5] && XSet[7] && XSet[4])){
+                    markO(1)
+                }else if((OSet[7] && XSet[6] && XSet[3] && XSet[1]) || (OSet[7] && XSet[4] && XSet[3]) || (OSet[7] && XSet[2] && XSet[8])){
+                    markO(5)
+                }else if((OSet[6] && XSet[3] && XSet[1] && XSet[5]) || (OSet[7] && XSet[3] && XSet[5]) || (OSet[2] && XSet[1] && XSet[7]) || (OSet[8] && !isSet[4])){
+                    markO(4)
+                }else if((OSet[7] && XSet[2] && XSet[4]) || (OSet[5] && XSet[2] && XSet[4]) || (OSet[8] && XSet[4] && XSet[2])){
+                    markO(6)
+                }else if((OSet[4] && XSet[6] && XSet[8]) || (OSet[5] && XSet[8] && XSet[6])){
+                    markO(7)
+                }else{
+                    markO(2)
+                }
+            }else if(OSet[8]){
+                if((OSet[3] && XSet[0] && XSet[6]) || (OSet[3] && XSet[6] && XSet[4]) || (OSet[3] && XSet[0] && XSet[5] && XSet[7]) || (OSet[3] && XSet[1] && XSet[0]) || (OSet[1] && XSet[4] && XSet[6])){
+                    markO(2)
+                }else if((OSet[6] && !isSet[7])){
+                    markO(7)
+                }else if((OSet[6] && XSet[7] && XSet[1]) || (OSet[1] && XSet[3] && XSet[5] && XSet[7]) || OSet[2] && XSet[3] && XSet[7] && XSet[5]){
+                    markO(4)
+                }else if((OSet[3] && XSet[4] && XSet[7])){
+                    markO(1)
+                }else if((OSet[3] && XSet[4] && XSet[2]) || (OSet[1] && XSet[2] && XSet[4]) || (OSet[1] && XSet[0] && XSet[4]) || (OSet[1] && XSet[0] && XSet[2]) || (OSet[1] && XSet[0] && XSet[3]) || (OSet[1] && XSet[0] && XSet[7] && XSet[5])){
+                    markO(6)
+                }else if((OSet[1] && XSet[2] && XSet[5] && XSet[7]) || (OSet[1] && XSet[4] && XSet[5] && XSet[7]) || (OSet[1] && XSet[5] && XSet[6] && XSet[7])){
+                    markO(3)
+                }else if((OSet[2] && XSet[5] && XSet[6] && XSet[7])){
+                    markO(0)
+                }else{
+                    markO(5)
+                }
             }
-            
             break
 
         default:
-            if(XSet[0] || XSet[2] || XSet[6] || XSet[7]){
-                
+            if(!isSet[0] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
+                markO(0)
+            }else if(!isSet[1] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
+                markO(1)
+            }else if(!isSet[2] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
+                markO(2)
+            }else if(!isSet[3] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
+                markO(3)
+            }else if(!isSet[4] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
+                markO(4)
+            }else if(!isSet[5] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
+                markO(5)
+            }else if(!isSet[6] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
+                markO(6)
+            }else if(!isSet[7] && ((OSet[1] && OSet[2]) || (OSet[3] && OSet[6]) || (OSet[4] && OSet[8]) || (XSet[1] && XSet[2]) || (XSet[3] && XSet[6]) || (XSet[4] && XSet[8]))){
+                markO(7)
+            }else{
+                markO(8)
             }
     }
     whichMove++
